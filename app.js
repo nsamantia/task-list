@@ -16,7 +16,9 @@ function loadEventListeners(){
     // Remove task event
     taskList.addEventListener('click', removeTask);
     // Clear task event
-    clearBtn.addEventListener('click', clearTasks);
+    // clearBtn.addEventListener('click', clearTasks);
+    //Filter tasks event
+    filter.addEventListener('keyup', filterTasks);
 }
 
 // Add task
@@ -28,7 +30,7 @@ function addTask(e){
     // Create li element
     const li = document.createElement('li');
     // Add class
-    li.className = 'collection-time';
+    li.className = 'collection-item';
     // Create text node and append to li
     li.appendChild(document.createTextNode(taskInput.value));
     // Create new link element
@@ -64,4 +66,19 @@ function clearTasks(){
     while(taskList.firstChild){
         taskList.removeChild(taskList.firstChild);
     }
+}
+
+//Filter Tasks
+function filterTasks(e){
+    const text = e.target.value.toLowerCase();
+
+    document.querySelectorAll('.collection-item').forEach
+    (function(task){
+        const item = task.firstChild.textContent;
+        if(item.toLowerCase().indexOf(text) != -1){
+            task.style.display = 'block';
+        } else {
+            task.style.display = 'none';
+        }
+    });
 }
