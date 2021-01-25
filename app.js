@@ -18,8 +18,8 @@ function loadEventListeners(){
     // Remove task event
     taskList.addEventListener('click', removeTask);
     // Clear task event
-    // clearBtn.addEventListener('click', clearTasks);
-    //Filter tasks event
+    clearBtn.addEventListener('click', clearTasks);
+    // Filter tasks event
     filter.addEventListener('keyup', filterTasks);
 }
 
@@ -134,6 +134,14 @@ function clearTasks(){
     while(taskList.firstChild){
         taskList.removeChild(taskList.firstChild);
     }
+
+    //Clear from LS
+    clearTasksFromLocalStorage();
+}
+
+// Clear Tasks from LS
+function clearTasksFromLocalStorage(){
+    localStorage.clear();
 }
 
 //Filter Tasks
